@@ -1,0 +1,25 @@
+[user]
+    email = yusuke.fujita@dena.com
+    name = yusuke-fujita
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[color]
+    ui = auto
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    gra = log --graph --date-order -C -M --pretty=format:\"<%h> %ad[%an] %Cgreen%d%Creset %s\" --all --date=short
+
+[core]
+    pager = lv -c
+
+[push]
+    default = upstream
