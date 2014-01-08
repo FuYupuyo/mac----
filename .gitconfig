@@ -1,6 +1,4 @@
 [user]
-    email = yusuke.fujita@dena.com
-    name = yusuke-fujita
 
 [diff]
     tool = vimdiff

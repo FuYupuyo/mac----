@@ -1,3 +1,49 @@
+"▼ NeoBundle
+"--------------------------------------------------------------------------
+set nocompatible               " be iMproved
+filetype off
+
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle/'))
+    endif
+    " originalrepos on github
+    NeoBundle 'Shougo/neobundle.vim'
+    NeoBundle 'Shougo/vimproc'
+    NeoBundle 'VimClojure'
+    NeoBundle 'Shougo/vimshell'
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'h1mesuke/unite-outline'
+    NeoBundle 'Shougo/neocomplcache'
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'jpalardy/vim-slime'
+    NeoBundle 'scrooloose/syntastic'
+    ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+
+filetype plugin indent on     " required!
+filetype indent on
+syntax on
+
+"▼ Unite.vim
+"--------------------------------------------------------------------------
+nnoremap    [unite]   <Nop>
+nmap    <Leader>f [unite]
+
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> ,vr :UniteResume<CR>
+
+let g:vinarise_enable_auto_detect = 1
+nnoremap <silent> ,vb :Unite build<CR>
+nnoremap <silent> ,vcb :Unite build:!<CR>
+nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
+
+
 "▼  表示関連
 "--------------------------------------------------------------------------
 "文字コード
@@ -27,25 +73,25 @@ set statusline=%t\%=[%{&ff}]\[%{&fileencoding}]
 set laststatus=2
 
 "空白文字の可視化
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
-if has("syntax")
-    syntax on
-
-    " PODバグ対策
-    syn sync fromstart
-    function! ActivateInvisibleIndicator()
-        "下の行の"　"は全角スペース
-        syntax match InvisibleJISX0208Space "　" display containedin=ALL
-        highlight InvisibleJISX0208Space term=underline ctermbg=Blue guibg=darkgray gui=underline
-        endfunction
-
-        augroup invisible
-            autocmd! invisible
-            autocmd BufNew,BufRead * call ActivateInvisibleIndicator()
-        augroup END
-endif
+"set list
+"set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+"
+"if has("syntax")
+"    syntax on
+"
+"    " PODバグ対策
+"    syn sync fromstart
+"    function! ActivateInvisibleIndicator()
+"        "下の行の"　"は全角スペース
+"        syntax match InvisibleJISX0208Space "　" display containedin=ALL
+"        highlight InvisibleJISX0208Space term=underline ctermbg=Blue guibg=darkgray gui=underline
+"        endfunction
+"
+"        augroup invisible
+"            autocmd! invisible
+"            autocmd BufNew,BufRead * call ActivateInvisibleIndicator()
+"        augroup END
+"endif
 
 
 "▼  移動操作
@@ -94,6 +140,7 @@ set wildmenu
 "--------------------------------------------------------------------------
 inoremap <C-d> $
 inoremap <C-a> @
+inoremap <C-z> *   <LEFT><LEFT>
 noremap <CR> $o<ESC>
 imap {} {}<LEFT>
 imap [] []<LEFT>
