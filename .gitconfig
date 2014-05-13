@@ -1,5 +1,5 @@
 [user]
-    email = 
+    email =
     name =
 
 [diff]
@@ -14,12 +14,15 @@
 [alias]
     co = checkout
     br = branch
-    ci = commit
+    co = commit
     st = status
     gra = log --graph --date-order -C -M --pretty=format:\"<%h> %ad[%an] %Cgreen%d%Creset %s\" --all --date=short
+    di = difftool
 
 [core]
     pager = lv -c
+    excludesfile = ~/.gitignore
+    editor = vim -c \"set fenc=utf-8\"
 
 [push]
     default = upstream
